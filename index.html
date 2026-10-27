@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ranking The Souza</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="demo-bar" id="demoBar" hidden></div>
+<div class="warn-bar" id="storageWarn" hidden>
+  Este navegador não está salvando os dados (janela anônima ou bloqueio). Abra no Chrome normal para não perder o ranking.
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="brand"><small>THE SOUZA</small><h1>Ranking de Indicações</h1></div>
+    <div class="saved" id="headStatus"></div>
+  </header>
+
+  <div class="grid">
+    <aside>
+      <div class="card">
+        <div class="prize"><small>PRÊMIO DO 1º LUGAR</small><b id="prizeShow"></b></div>
+      </div>
+
+      <div class="card">
+        <h2>Novo cliente</h2>
+        <form id="form" autocomplete="off">
+          <label for="nome">Nome</label>
+          <input id="nome" maxlength="30" placeholder="Ex.: Rafael">
+          <label for="sobrenome">Sobrenome</label>
+          <input id="sobrenome" maxlength="40" placeholder="Ex.: Lima">
+          <label for="cel">Celular</label>
+          <input id="cel" inputmode="numeric" placeholder="(21) 99999-9999">
+          <div class="err" id="err" role="alert"></div>
+          <button class="btn" type="submit">Cadastrar cliente</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Pontos e prêmio</h2>
+        <div class="row2">
+          <div><label for="cInd" style="margin-top:0">Indicação</label><input id="cInd" type="number" min="1" max="999"></div>
+          <div><label for="cPlano" style="margin-top:0">Extra por plano</label><input id="cPlano" type="number" min="0" max="999"></div>
+        </div>
+        <label for="cPremio">Prêmio</label>
+        <input id="cPremio" maxlength="60">
+        <button class="link" id="reset" type="button" hidden>Restaurar dados de exemplo</button>
+      </div>
+
+      <div class="card" id="backupCard">
+        <h2>Cópia de segurança</h2>
+        <p class="note" id="backupInfo"></p>
+        <button class="btn" id="btnBackup" type="button" style="margin-top:6px">Salvar cópia de segurança</button>
+        <button class="btn ghost" id="btnRestore" type="button">Restaurar uma cópia</button>
+        <input type="file" id="fileRestore" accept=".json,application/json" hidden>
+        <button class="link" id="btnCsv" type="button">Exportar planilha (CSV)</button>
+      </div>
+    </aside>
+
+    <main class="card">
+      <div class="top">
+        <div><h2>Ranking</h2><div class="sub" id="sub"></div></div>
+        <input class="search" id="busca" placeholder="Buscar cliente ou celular" aria-label="Buscar cliente">
+      </div>
+      <table>
+        <thead><tr><th>Pos.</th><th>Cliente</th><th>Celular</th><th style="text-align:right">Pontos</th><th></th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="empty" id="empty" hidden></div>
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toastMsg"></span><button id="undo" type="button">Desfazer</button></div>
+
+<script src="js/config.js"></script>
+<script src="js/ranking.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
